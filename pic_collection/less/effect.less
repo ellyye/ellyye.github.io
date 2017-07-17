@@ -689,7 +689,6 @@ body{
 			width:90%;
 			left:5%;
 			top:65%;
-			margin-top:20px;
 			opacity:0;
 			.transform(translateY(-20px));
 			.transition(all,@duration);
@@ -702,12 +701,12 @@ body{
 			width:90%;
 			height:30%;
 			border:3px solid #fff;
-			.transition(transform,@duration);
+			.transition(top,@duration);
 		}
 	}
 	
 	&:hover .middle-cover:before{
-		.translate(0,130%);
+		top:60%;
 	}
 	&:hover .middle-cover{
 		background:rgba(0,0,0,.4);
@@ -791,13 +790,14 @@ body{
 		.transition(background,@duration);
 		h2{
 			position:absolute;
-			top:40%;
+			top:50%;
 			width:80%;
 			left:10%;
+			.transform(translateY(-40px));
 		}
 		p{
 			position:absolute;
-			top:55%;
+			top:50%;
 			width:80%;
 			left:10%;
 			.transition(all,@duration);
