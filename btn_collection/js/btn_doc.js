@@ -50,12 +50,14 @@ YD.changePosition=function(){
 // 展开收起
 YD.clickToggle=function(btn,target){
 	btn.click(function(){
+
 		if($(this).html()=="展开源码+"){
 			$(this).html("收起源码-")
 		}else{
 			$(this).html("展开源码+")
 		}
 		var index=btn.index($(this));
+		target.eq(index).stop(true,true);
 		target.eq(index).slideToggle();
 
 	})
