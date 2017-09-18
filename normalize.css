@@ -15,8 +15,9 @@ table {
 	border-spacing:0
 }
 img {
-	border:0
+	border:0;
 }
+img{vertical-align: top;display:block;min-height:1px;}
 h1,h2,h3,h4,h5,h6 {
 	font-size:100%
 }
@@ -56,3 +57,7 @@ a {
 	cursor:pointer;
 	color:#369
 }
+
+// #zt
+img{vertical-align: top;display:block;min-height:1px;}
+body{background:none;}
