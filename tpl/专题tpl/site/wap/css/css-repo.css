@@ -1,0 +1,19 @@
+@charset "utf-8";
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.4);
+}
+img {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(http://2.tthunbohui.cn/zhuanti/10809/YQH-imgBj-logo.png);
+  background-size: 20% auto;
+}
+.mobilePhoneSystem {
+  width: 16rem;
+  margin: auto;
+  text-align: center;
+  line-height: 0.75rem;
+  font-size: 0.4rem;
+  background: red;
+  color: #fff;
+}

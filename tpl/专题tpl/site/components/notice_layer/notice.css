@@ -1,0 +1,17 @@
+// /*换届弹窗pc样式*/
+// .zt_tc{width: 600px; overflow: hidden; border: solid red 1px; text-align: center; position: fixed; padding: 10px;  font-size: 20px;
+//      background: #fff; z-index: 1001; }
+// .zt_tc span{color: red; display:line-block}
+// .zt_tc h3{margin-bottom: 10px;}
+// .tc_close{position: absolute; right: 10px; top: 0; font-size: 20px; cursor: pointer;}
+// .go_next{width: 400px; height: 40px; line-height: 40px; background: red; color: #fff; text-align: center; margin: 10px auto; cursor: pointer;}
+// .zt_tc span{color: red; display:inline-block}
+
+/*换届弹窗wap*/
+.zt_tc{width: 15rem; overflow: hidden; border: solid red 1px; text-align: center; position: fixed; padding: .25rem;  font-size: .5rem;
+     background: #fff; z-index: 1001;}
+.zt_tc span{color: red; display:line-block}
+.zt_tc h3{margin-bottom: .25rem;}
+.tc_close{position: absolute; right: .25rem; top: 0; font-size: .5rem; cursor: pointer;}
+.go_next{width: 10rem; height: 1rem; line-height: 1rem; background: red; color: #fff; text-align: center; margin: .25rem auto; cursor: pointer;}
+.zt_tc span{color: red; display:inline-block}

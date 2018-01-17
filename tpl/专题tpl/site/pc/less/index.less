@@ -1,0 +1,151 @@
+@charset "utf-8";
+@import "css-repo.less";
+
+/* 三段式可扩展背景 */
+.bg-box{
+	.box-sizing;
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	padding-top:0.82rem;
+	padding-bottom:0.17rem;
+	.bg-top{
+		position: absolute;
+		left:0;
+		top:0;
+		width:100%;
+		height:0.825rem;
+		background:url(../images/bg_top.png) no-repeat top center;
+		background-size:contain;
+	}
+	.bg-middle{
+		height:100%;
+		background:url(../images/bg_middle.png)center;
+		background-size:contain;
+	}
+	.bg-bottom{
+		position: absolute;
+		left:0;
+		bottom:0;
+		width:100%;
+		height:0.175rem;
+		background:url(../images/bg_bottom.png) no-repeat bottom center;
+		background-size:contain;
+	}
+}
+
+/* ************************头图 */
+.zt-banner-box{
+	position:relative;
+	overflow:hidden;
+	height:;
+}
+.zt-banmner-wrap{
+	position:absolute;
+	left:50%;
+	margin-left:-960px;
+	height:;
+}
+/* **************************end */
+
+/* ****************************底部广告 */
+.bottom-advertise{
+	text-align: center;
+	margin:50px 0;
+	font-size:0;
+	a{
+		display: inline-block;
+		width: 280px;
+		height:155px;
+		margin:5px;
+		img{
+			width: 100%;
+			height:100%;
+		}
+	}
+}
+/* ****************************底部广告 end*/
+
+/* ****************************侧边导航 S*/
+.aside-nav {
+  position: fixed;
+  left: 50%;
+  top:50%;
+  margin-top:-180px;
+  margin-left: 540px;
+  width: 176px;
+  height: 357px;
+  background: url(../images/aside_nav.png) no-repeat center;
+  font-size:0;
+  z-index:1;
+  ul {
+	  padding-top: 60px;
+	  width: 95px;
+	  margin: auto;
+	  text-align: center;
+	  li{
+		  border-bottom: 1px dashed #fff;
+		  a {
+			 .clear-A;
+			  display: block;
+			  height: 42px;
+			  line-height: 42px;
+			  font-size:18px;
+			  color:#fff;
+			  .ellipsis;
+			  &:hover {
+				  color:#feffaa;
+				}
+			}
+		}
+		li.selected-nav a{
+		  color: #ff275a;
+		}
+		.back-top{
+			border:none;
+			text-align:center;
+			margin-top:15px;
+			a{
+				width:38px;
+				height:38px;
+				text-align:center;
+				display:inline-block;
+				line-height:38px;
+				border:1px solid #fff;
+				background:#1a3b64;
+				color:#feffaa;
+				border-radius:50%;
+				text-transform:uppercase;
+				font-size:16px;
+			}
+		}
+	}
+}
+/* ****************************侧边导航 E*/
+
+/* **********************************返回顶部 */
+.back-top-box{
+	margin-top:40px;
+	text-align:center;
+	.back-top{
+		width:136px;
+		height:126px;
+		background:url(../images/back_top_bg.png);
+		line-height:120px;
+		display: inline-block;
+	}
+	a{
+		.clear-A;
+		// color:@color;
+		font-size:30px;
+		width:64px;
+		height:72px;
+		line-height:36px;
+		vertical-align:middle;
+		display:inline-block;
+
+	}
+}
+/* **********************************返回顶部  end*/

@@ -1,0 +1,123 @@
+@charset "utf-8";
+img {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(http://2.tthunbohui.cn/zhuanti/10809/YQH-imgBj-logo.png);
+  background-size: 20% auto;
+}
+a:hover {
+  text-decoration: none;
+}
+html {
+  background: #fff;
+}
+/* ************************头图 */
+.yd-banner {
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+  text-align: center;
+}
+.yd-banner .yd-banmner-body {
+  position: absolute;
+  left: 50%;
+  margin-left: -960px;
+}
+/* **************************end */
+/* ****************************底部广告 */
+.bottom-advertise {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 0;
+}
+.bottom-advertise a {
+  display: inline-block;
+  width: 280px;
+  height: 155px;
+  margin: 5px;
+}
+.bottom-advertise a img {
+  width: 100%;
+  height: 100%;
+}
+/* ****************************底部广告 end*/
+/* ****************************侧边导航 S*/
+.aside-nav {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -180px;
+  margin-left: 540px;
+  width: 176px;
+  height: 357px;
+  background: url(../images/aside_nav.png) no-repeat center;
+  font-size: 0;
+  z-index: 1;
+}
+.aside-nav ul {
+  padding-top: 60px;
+  width: 95px;
+  margin: auto;
+  text-align: center;
+}
+.aside-nav ul li {
+  border-bottom: 1px dashed #fff;
+}
+.aside-nav ul li a {
+  text-decoration: none;
+  display: block;
+  height: 42px;
+  line-height: 42px;
+  font-size: 18px;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.aside-nav ul li a:hover {
+  color: #feffaa;
+}
+.aside-nav ul li.selected-nav a {
+  color: #ff275a;
+}
+.aside-nav ul .back-top {
+  border: none;
+  text-align: center;
+  margin-top: 15px;
+}
+.aside-nav ul .back-top a {
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  display: inline-block;
+  line-height: 38px;
+  border: 1px solid #fff;
+  background: #1a3b64;
+  color: #feffaa;
+  border-radius: 50%;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+/* ****************************侧边导航 E*/
+/* **********************************返回顶部 */
+.back-top-box {
+  margin-top: 40px;
+  text-align: center;
+}
+.back-top-box .back-top {
+  width: 136px;
+  height: 126px;
+  background: url(../images/back_top_bg.png);
+  line-height: 120px;
+  display: inline-block;
+}
+.back-top-box a {
+  text-decoration: none;
+  font-size: 30px;
+  width: 64px;
+  height: 72px;
+  line-height: 36px;
+  vertical-align: middle;
+  display: inline-block;
+}
+/* **********************************返回顶部  end*/

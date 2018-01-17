@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		/* **************************客资 */
+.customer-query {
+  width: 15.5rem;
+  margin: auto;
+  padding: 0.25rem;
+  background: #fff;
+  margin-bottom: 0.3rem;
+}
+.customer-query .query-body {
+  background: #ee6854;
+  padding-bottom: 2.625rem;
+  position: relative;
+}
+.customer-query .query-body .deco {
+  position: absolute;
+  top: -1.125rem;
+  right: 1.6rem;
+  background: url(http://1.tthunbohui.cn/zhuanti/12972/customer_query_deco.png) no-repeat center;
+  background-size: contain;
+  width: 2.75rem;
+  height: 3.35rem;
+}
+.customer-query .query-body h1 {
+  line-height: 2.5rem;
+  font-size: 0.85rem;
+  color: #fff;
+  text-align: center;
+  font-weight: normal;
+}
+.customer-query .query-body .data {
+  font-size: 0.9rem;
+  line-height: 1.9rem;
+  text-indent: 0.7rem;
+}
+.customer-query .query-body .data .rela-title {
+  width: 13.0rem;
+  height: 1.9rem;
+  margin: auto;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* Firefox */
+  -webkit-box-sizing: border-box;
+  /* Safari */
+  padding-right: 1.8rem;
+  background: url(../img/arrow_down.png) no-repeat right 0.45rem center;
+  background-size: 1.15rem 0.6rem;
+  background-color: #fff;
+  margin-bottom: 0.65rem;
+}
+.customer-query .query-body .data .rela-title b {
+  font-weight: normal;
+}
+.customer-query .query-body .data .hqlist {
+  width: 13.0rem;
+  left: 50%;
+  margin-left: -6.5rem;
+  background: #fff;
+  line-height: 1.5rem;
+  position: absolute;
+  display: none;
+  margin-top: -0.7rem;
+  z-index: 1;
+}
+.customer-query .query-body .submitbtn {
+  display: block;
+  width: 13.0rem;
+  height: 1.9rem;
+  margin: auto;
+  border: none;
+  line-height: 1.9rem;
+  font-size: 0.95rem;
+  background: #d30707;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  border-radius: 0.25rem;
+}
+.customer-query .query-body .contact {
+  font-size: 0.8rem;
+  color: #fff;
+  text-align: center;
+}
+/* **************************end */
+	</style>
+</head>
+<body>
+
+<!-- 客资 -->
+	<div class="customer-query">
+		<div class="query-body">
+		<div class="deco"></div>
+		<h1>查需求 • 得福利</h1>
+		{{partial:/xiyan/kezi}}
+		<form class="_jform neirong get_kezi_form" action="/xiyan/_add_consulting" data="data-auto-init" method="post">
+		      <input type="hidden" name="cate_id" value="1000">
+		      <input type="hidden" name="demand_id" value="">
+		      <input type="hidden" name="album_id" value="0">
+		      <input type="hidden" name="product_id" value="0">
+		      <input type="hidden" name="store_id" value="0">
+		      <input type="hidden" name="type" value="1">
+		      <div class="data"></div>
+		      <div class="data">
+			    <div class="rela g-f">
+			        <div class="rela-title">
+			            <b>区域：</b>
+			            <input type="hidden" class="ipt kezi-outer-input" name="区域" value="西湖区" />
+			            <span class="spaninput">西湖区</span>
+			            <i class="kzdown">
+			                <span>
+			                    <em></em>
+			                </span>
+			            </i>
+			        </div>
+			        <div class="hqlist heng">
+			            <ul>
+			                <li value="西湖区">西湖区</li>
+			                <li value="下城区">下城区</li>
+			                <li value="上城区">上城区</li>
+			                <li value="江干区">江干区</li>
+			                <li value="拱墅区">拱墅区</li>
+			                <li value="滨江区">滨江区</li>
+			                <li value="萧山区">萧山区</li>
+			                <li value="余杭区">余杭区</li></ul>
+			            <i class="sanjiao"></i>
+			        </div>
+			    </div>
+			    <div class="rela g-f">
+			        <div class="rela-title">
+			            <b>桌数：</b>
+			            <input type="hidden" class="ipt kezi-outer-input" name="桌数" value="20-30桌" />
+			            <span class="spaninput">20-30桌</span>
+			            <i class="kzdown">
+			                <span>
+			                    <em></em>
+			                </span>
+			            </i>
+			        </div>
+			        <div class="hqlist heng">
+			            <ul>
+			                <li value="20桌以下">20桌以下</li>
+			                <li value="20-30桌">20-30桌</li>
+			                <li value="30-40桌">30-40桌</li>
+			                <li value="40-50桌">40-50桌</li>
+			                <li value="50桌以上">50桌以上</li></ul>
+			            <i class="sanjiao"></i>
+			        </div>
+			    </div>
+			    <div class="rela g-f">
+			        <div class="rela-title">
+			            <b>预算：</b>
+			            <input type="hidden" class="ipt kezi-outer-input" name="预算" value="3000-5000" />
+			            <span class="spaninput">3000-5000</span>
+			            <i class="kzdown">
+			                <span>
+			                    <em></em>
+			                </span>
+			            </i>
+			        </div>
+			        <div class="hqlist heng">
+			            <ul>
+			                <li value="2000-3000">2000-3000</li>
+			                <li value="3000-5000">3000-5000</li>
+			                <li value="5000-7000">5000-7000</li>
+			                <li value="7000以上">7000以上</li></ul>
+			            <i class="sanjiao"></i>
+			        </div>
+			    </div>
+			  </div>
+		      <input class="submitbtn get_cate_kezi" value="立即查看" type="button">
+		      <p class="contact">咨询电话：0571-28102599</p>
+		</form>
+		</div>
+	</div>
+<!-- end -->
+
+<script>
+	hapj(function(H){H.get('bootstrap').initAppointHbh()});			//引入后台框架
+	
+</script>
+</body>
+</html>

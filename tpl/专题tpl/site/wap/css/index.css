@@ -1,0 +1,166 @@
+@charset "utf-8";
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.4);
+}
+img {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(http://2.tthunbohui.cn/zhuanti/10809/YQH-imgBj-logo.png);
+  background-size: 20% auto;
+}
+.mobilePhoneSystem {
+  width: 16rem;
+  margin: auto;
+  text-align: center;
+  line-height: 0.75rem;
+  font-size: 0.4rem;
+  background: red;
+  color: #fff;
+}
+@keyframes arrowup {
+  0% {
+    transform-origin: 50% 50% 0;
+    -ms-transform-origin: 50% 50% 0;
+    /* IE 9 */
+    -webkit-transform-origin: 50% 50% 0;
+    /* Safari 和 Chrome */
+    -moz-transform-origin: 50% 50% 0;
+    /* Firefox */
+    -o-transform-origin: 50% 50% 0;
+    /* Opera */
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    /* IE 9 */
+    -moz-transform: translateY(0);
+    /* Firefox */
+    -webkit-transform: translateY(0);
+    /* Safari 和 Chrome */
+    -o-transform: translateY(0);
+    /* Opera */
+    opacity: 1;
+  }
+  100% {
+    transform-origin: 50% 50% 0;
+    -ms-transform-origin: 50% 50% 0;
+    /* IE 9 */
+    -webkit-transform-origin: 50% 50% 0;
+    /* Safari 和 Chrome */
+    -moz-transform-origin: 50% 50% 0;
+    /* Firefox */
+    -o-transform-origin: 50% 50% 0;
+    /* Opera */
+    transform: translateY(-0.75rem);
+    -ms-transform: translateY(-0.75rem);
+    /* IE 9 */
+    -moz-transform: translateY(-0.75rem);
+    /* Firefox */
+    -webkit-transform: translateY(-0.75rem);
+    /* Safari 和 Chrome */
+    -o-transform: translateY(-0.75rem);
+    /* Opera */
+    opacity: 0.1;
+  }
+}
+@-webkit-keyframes arrowup {
+  0% {
+    transform-origin: 50% 50% 0;
+    -ms-transform-origin: 50% 50% 0;
+    /* IE 9 */
+    -webkit-transform-origin: 50% 50% 0;
+    /* Safari 和 Chrome */
+    -moz-transform-origin: 50% 50% 0;
+    /* Firefox */
+    -o-transform-origin: 50% 50% 0;
+    /* Opera */
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    /* IE 9 */
+    -moz-transform: translateY(0);
+    /* Firefox */
+    -webkit-transform: translateY(0);
+    /* Safari 和 Chrome */
+    -o-transform: translateY(0);
+    /* Opera */
+    opacity: 1;
+  }
+  100% {
+    transform-origin: 50% 50% 0;
+    -ms-transform-origin: 50% 50% 0;
+    /* IE 9 */
+    -webkit-transform-origin: 50% 50% 0;
+    /* Safari 和 Chrome */
+    -moz-transform-origin: 50% 50% 0;
+    /* Firefox */
+    -o-transform-origin: 50% 50% 0;
+    /* Opera */
+    transform: translateY(-0.75rem);
+    -ms-transform: translateY(-0.75rem);
+    /* IE 9 */
+    -moz-transform: translateY(-0.75rem);
+    /* Firefox */
+    -webkit-transform: translateY(-0.75rem);
+    /* Safari 和 Chrome */
+    -o-transform: translateY(-0.75rem);
+    /* Opera */
+    opacity: 0.1;
+  }
+}
+/* *****************BANNER S****************** */
+.m-pic-box {
+  position: relative;
+  margin: auto;
+  width: 16rem;
+}
+.m-pic-wrap {
+  width: 16rem;
+  height: ;
+}
+.m-pic-wrap img {
+  width: 16rem;
+  height: ;
+}
+/* *****************BANNER E****************** */
+/* *****************底部链接 S****************** */
+.bottom-link {
+  margin: auto;
+  margin-bottom: 0.5rem;
+  width: 15.4rem;
+}
+.bottom-link:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.bottom-link li {
+  float: left;
+  margin: 0.25rem 0.35rem;
+}
+.bottom-link li img {
+  display: block;
+  width: 7.0rem;
+  height: 3.825rem;
+}
+/* *****************底部链接 E****************** */
+/* *****************导航 S****************** */
+.zt-nav-box {
+  width: 100%;
+  background: url(../images/nav_bg.jpg);
+  padding: 0.3rem 0;
+}
+.zt-nav-wrap {
+  margin: auto;
+  width: 15.5rem;
+  font-size: 0;
+  text-align: center;
+}
+.zt-nav-wrap li {
+  display: inline-block;
+  margin: 0 0.125rem;
+  background: #fff;
+}
+.zt-nav-wrap li a {
+  display: block;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.5rem;
+}
+/* *****************导航 E****************** */

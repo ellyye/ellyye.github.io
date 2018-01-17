@@ -1,0 +1,13 @@
+@charset "utf-8";
+img {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(http://2.tthunbohui.cn/zhuanti/10809/YQH-imgBj-logo.png);
+  background-size: 20% auto;
+}
+a:hover {
+  text-decoration: none;
+}
+html {
+  background: #fff;
+}
