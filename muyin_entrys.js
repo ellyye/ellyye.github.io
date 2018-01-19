@@ -18,10 +18,9 @@ var style='<style>.entry-list-fix{position:fixed;z-index:9;width:100%;bottom:0;l
 var html='<div class="entry-list-fix"><ul class="entry-list-box">		<li class="entry-box entry-box1"><a href="'+entrys[0].url+'">'+entrys[0].txt+'</a></li>		<li class="entry-box entry-box2"><a href="'+entrys[1].url+'">'+entrys[1].txt+'</a></li>		<li class="entry-box entry-box3"><a href="'+entrys[2].url+'">'+entrys[2].txt+'</a></li>	</ul>	</div>';
 var script='<script>var YD={};$(function(){YD.showEntry($(".entry-box a"))});YD.showEntry=function(entrys){if(location.href.indexOf("edit")===-1){entrys.each(function(){var ifshow=($(this).attr("href").indexOf("javascript")!==-1);if(ifshow){$(this).parent().hide()}else{$(this).parent().show()}})}};</script>';
 
-$("body").append($(style))
-	.append($(html))
-
+$("#entry").html("").append($(style)).append($(html));
+	
 $(".entry-list-fix").load(function(){
-	$(bod).append($(script));
+	$("#entry").append($(script));
 })
 	
