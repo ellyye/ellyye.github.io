@@ -2,15 +2,15 @@
 var entrys=[
 	{
 		"txt":"模特大赛<br>点我报名",
-		"url":"javascript:;"
+		"url":"aaa"
 	},
 	{
 		"txt":"模特大赛<br>点我报名",
-		"url":"javascript:;"
+		"url":"aaa"
 	},
 	{
 		"txt":"模特大赛<br>点我报名",
-		"url":"javascript:;"
+		"url":"aaa"
 	},
 ];
 
