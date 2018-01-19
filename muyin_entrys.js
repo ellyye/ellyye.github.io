@@ -21,7 +21,5 @@ var style='<style>.entry-list-fix{position:fixed;z-index:9;width:100%;bottom:0;l
 var html='<div class="entry-list-fix"><ul class="entry-list-box">		<li class="entry-box entry-box1"><a href="'+entrys[0].url+'">'+entrys[0].txt+'</a></li>		<li class="entry-box entry-box2"><a href="'+entrys[1].url+'">'+entrys[1].txt+'</a></li>		<li class="entry-box entry-box3"><a href="'+entrys[2].url+'">'+entrys[2].txt+'</a></li>	</ul>	</div>';
 
 $("#entry").html("").append($(style)).append($(html));	
-$(".entry-list-fix").load(function(){
-	YD.showEntry($(".entry-box a"));
-})
+YD.showEntry($(".entry-box a"));
 	
