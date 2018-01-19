@@ -2,7 +2,7 @@
 var entrys=[
 	{
 		"txt":"模特大赛<br>点我报名",
-		"url":"aaa"
+		"url":"javascript:;"
 	},
 	{
 		"txt":"模特大赛<br>点我报名",
