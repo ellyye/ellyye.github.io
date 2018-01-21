@@ -10,12 +10,8 @@ $(function(){
 
 	// sidebar($(".aside-nav"));	                    //侧边栏
 
-	// //头图与侧边栏重叠时，隐藏侧边栏
-	// $(window).scroll(
-	// 	function(){
-	// 		YD.toggleAside($(".aside-nav"),600);			
-	// 	}
-	// );
+	//头图与侧边栏重叠时，隐藏侧边栏
+// 	YD.toggleAside($(".aside-nav"),1000+193);
 
 	// // 头图元素移动效果
 	// $(window).mousemove(function(e){
@@ -158,14 +154,18 @@ YD.drag=function(dom){
 	  }
 }
 
-// 侧边导航与头图重叠时，隐藏侧边导航，dom是侧边栏dom对象，y是头图高度
+// 侧边导航与头图重叠时，隐藏侧边导航，dom是侧边栏dom对象，y=头图高度+头部导航高度（193px）
 YD.toggleAside=function(dom,y){
-	var y=y-dom.offset().top;
-	if($(window).scrollTop()>=y){
-		dom.fadeIn();
-	}else{
-		dom.fadeOut();
-	}
+    dom.removeAttr("style");
+    var top=y-parseInt(dom.css("top"));
+    $(window).scroll(function(){
+        var scroll=$(window).scrollTop();
+    	if(scroll>=top){
+    		dom.fadeIn();
+    	}else{
+    		dom.fadeOut();
+    	}
+    })
 }
 
 // 给css样式添加私有前缀
