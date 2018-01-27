@@ -68,38 +68,29 @@ function flexslider(){
 // 点击锚点跳转并高亮
 YD.hightlightNav=function(navs,targets,position,offset){
 	var len=targets.length;
+	var i;
+		
+	navs.click(function(){
+		// $(window).off("scroll");
+		console.log(1);
 
-	if(position==="bottom"){
-		// 导航在底部
-		navs.click(function(){
-			// $(window).off("scroll");
-			console.log(1);
-
-			var i=navs.index($(this));
-			var offsetTopValue=targets.eq(i).offset().top;
-			var that=$(this);
-
-			$(window).scrollTop(offsetTopValue);
-			
-		})
-	}else if(position==="top"){
-		// 导航在顶部
-		navs.click(function(){
-			// $(window).off("scroll");
-
-			var i=navs.index($(this));
-			var offsetTopValue=targets.eq(i).offset().top;
-			var that=$(this);
-
+		i=navs.index($(this));
+		var offsetTopValue=targets.eq(i).offset().top;
+		var that=$(this);
+        if(position==="bottom"){
+            // 导航在底部
+		    $(window).scrollTop(offsetTopValue);
+        }else if(position==="top"){
+            // 导航在顶部
 			$(window).scrollTop(offsetTopValue-offset*YD.fontSize);
-		})
-	}
+		}
+	});
 
 	$(window).scroll(function(){
 		var len=targets.length;
 		var scrollTopValue=$(window).scrollTop();
 
-		for(var i=len-1;i>=0;i--){
+		for(i=len-1;i>=0;i--){
 			var offsetTopValue=targets.eq(i).offset().top;
 
 			if(scrollTopValue>(offsetTopValue-200)){
@@ -110,7 +101,6 @@ YD.hightlightNav=function(navs,targets,position,offset){
 		}
 	})
 }
-
 //跟随导航
 YD.followNav=function(){
 	var maxScrollH=$(".nav-placeholder").offset().top;
