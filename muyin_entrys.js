@@ -4,13 +4,13 @@ var entrys=[
 		"txt":"模特大赛<br>点我报名",
 		"url":"https://bj.jiehun.com.cn/m/muying/activity/3142 ;"
 	},
+	{	
+		"txt":"书画大赛<br>点我报名",
+		"url":""
+	},
 	{
 		"txt":"才艺大赛<br>点我报名",
 		"url":"https://bj.jiehun.com.cn/m/muying/activity/3095 "
-	},
-	{
-		"txt":"书画大赛<br>点我报名",
-		"url":"aaa"
 	},
 ];
 
