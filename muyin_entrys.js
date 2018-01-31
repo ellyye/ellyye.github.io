@@ -10,7 +10,7 @@ var entrys=[
 	},
 	{
 		"txt":"书画大赛<br>点我报名",
-		"url":"javascript:;"
+		"url":"aaa"
 	},
 ];
 
