@@ -9,7 +9,7 @@ var entrys=[
 		"url":"https://bj.jiehun.com.cn/m/muying/activity/3095 "
 	},
 	{
-		"txt":"模特大赛<br>点我报名",
+		"txt":"书画大赛<br>点我报名",
 		"url":"javascript:;"
 	},
 ];
