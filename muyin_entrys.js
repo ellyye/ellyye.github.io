@@ -2,7 +2,7 @@
 var entrys=[
 	{
 		"txt":"模特大赛<br>点我报名",
-		"url":"https://bj.jiehun.com.cn/m/muying/activity/3142"
+		"url":"https://gz.jiehun.com.cn/m/muying/activity/3057"
 	},
 	{	
 		"txt":"书画大赛<br>点我报名",
@@ -10,7 +10,7 @@ var entrys=[
 	},
 	{
 		"txt":"才艺大赛<br>点我报名",
-		"url":"https://bj.jiehun.com.cn/m/muying/activity/3095"
+		"url":"https://gz.jiehun.com.cn/m/muying/activity/3058"
 	},
 ];
 
