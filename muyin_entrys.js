@@ -6,7 +6,8 @@ var entrys=[
 	},
 	{	
 		"txt":"书画大赛<br>点我报名",
-		"url":""
+		"url":"https://gz.jiehun.com.cn/m/muying/activity/3146 
+"
 	},
 	{
 		"txt":"才艺大赛<br>点我报名",
