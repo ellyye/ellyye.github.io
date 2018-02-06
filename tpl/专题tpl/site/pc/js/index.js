@@ -1,4 +1,8 @@
 var YD={};
+
+// 判断是否在编辑模式下
+YD.isEditmode=(location.href.indexOf("static_edit")!==-1);
+
 $(function(){
 	// pc预约到婚博会【并领券】弹窗
 	// hapj(function(H) { H.get('bootstrap').initAppointHbh() });
@@ -6,66 +10,43 @@ $(function(){
 	//     $(this).attr('storeid', $(this).attr('href'))
 	// })
 
-	YD.drag($(".drag-box"))								//设置模块可拖拽
-
-	// sidebar($(".aside-nav"));	                    //侧边栏
+	//设置模块可拖拽
+	// YD.drag($(".drag-box"));							
 
 	//头图与侧边栏重叠时，隐藏侧边栏
-// 	YD.toggleAside($(".aside-nav"),1000+193);
+	// 	YD.toggleAside($(".aside-nav"),1000+193);
 
-	// // 头图元素移动效果
-	// $(window).mousemove(function(e){
-	// 	var x=e.pageX;
-	// 	// alert(1);
-	// 	// document.write(x);
-	// 	var W=parseInt($("body").css("width"))/2;
-	// 	var d1=15;
-	// 	var d2=6;
-	// 	var x1=(W-x)/W*d1;
-	// 	var x2=(W-x)/W*d2;
-	// 	var x3=(x-W)/W*d2;
-	// 	var x1JSON=JSON.parse(YD.prefix("transform","translate("+x1+"px,0)"));
-	// 	var x2JSON=JSON.parse(YD.prefix("transform","translate("+x2+"px,0)"));
-	// 	var x3JSON=JSON.parse(YD.prefix("transform","translate("+x3+"px,0)"));
-	// 	$(".layer0").css(x1JSON);
-	// 	$(".part1").css(x2JSON);
-	// 	$(".layer6").css(x2JSON);
-	// 	$(".layer2").css(x2JSON);
-	// 	$(".part2").css(x3JSON);
-	// 	$(".part3").css(x3JSON);
-	// })
-
-	// // 导航顶部固定
-	// var y=$(".yd-nav-body").offset().top;
-	// $(window).scroll(function(){
-	// 	if($(window).scrollTop()>y){
-	// 		$(".yd-nav-body").addClass("nav-fix");
-	// 	}else{
-	// 		$(".yd-nav-body").removeClass("nav-fix");
-	// 	}
-	// })
-
-	//倒计时,手动给定时间
+	//单个倒计时,手动给定时间
 	// YD.timeCounter($("timer-box"),"2017/6/18 23:59:59");
 
-	// 倒计时模块，从页面获取时间
+	//多个倒计时，截止时间可编辑
 	// YD.SetTimer($(".time-counter-body"));
 
 });
 
-// 倒计时模块
+// 扩大点击范围
+YD.expandClickArea=function(target){
+	target.click(function(){
+		var url=$(this).find("a").attr("href");
+		location.href=url;
+	})
+};
+
+// 多个倒计时，截止时间可编辑，参数：显示倒计时的容器
 YD.SetTimer=function(timerBox){
-	if(location.href.indexOf("edit"===-1)){
+	if(!YD.isEditmode){
+		// 非编辑模式下
 		timerBox.each(function(){
 			var deadline=$(this).find(".time").text();
 			YD.timeCounter($(this),deadline);
 		})
 	}
-}
-// 倒计时，参数：显示倒计时的容器，截止时间，截止提示文字
+};
+
+// 单个倒计时,手动给定时间，参数：显示倒计时的容器，截止时间，截止提示文字
 YD.timeCounter=function(timerBox,deadline,text){
 	var time=YD.getTime(deadline);//获取时分秒
-	(text==undefined)&&(text="活动已截止");
+	(text===undefined)&&(text="活动已截止");
 	// console.log(time);
 	if(time.day!==undefined){
 		timerBox.html("<i>"+time.day+"</i>天<i>"+time.hour+"</i>时<i>"+time.minute+"</i>分<i>"+time.second+"</i>秒")
@@ -86,7 +67,9 @@ YD.getTime=function(deadline){
 	var time={};
 	// console.log(deadline,currentTime,duration);
 	function pushTimeStr(count,tag){
-		var timeStr=(parseInt(duration/count)+100+"").substring(1);
+		var timeStr=parseInt(duration/count);
+		timeStr<100&&(timeStr=(timeStr+100+"").substring(1));
+		// 迭代duration
 		duration=duration%count;
 		time[tag]=timeStr;
 	}
@@ -99,16 +82,16 @@ YD.getTime=function(deadline){
 		return time;
 	}
 	return time;
-}
+};
 
-// 点击锚点跳转并高亮
-YD.hightlightNav=function(navs,targets){
+// 锚点跳转，跟随高亮
+YD.hightlightNav=function(anchors,targets){
 	var len=targets.length;
 
-	navs.click(function(){
+	anchors.click(function(){
 		// $(window).off("scroll");
 
-		var i=navs.index($(this));
+		var i=anchors.index($(this));
 		var offsetTopValue=targets.eq(i).offset().top;
 		var that=$(this);
 
@@ -122,21 +105,21 @@ YD.hightlightNav=function(navs,targets){
 		var len=targets.length;
 		var scrollTopValue=$(window).scrollTop();
 
-		navs.eq(i).siblings().removeClass("selected");
+		anchors.eq(i).siblings().removeClass("selected");
 
 		for(var i=len-1;i>=0;i--){
 			var offsetTopValue=targets.eq(i).offset().top;
 
 			if(scrollTopValue>(offsetTopValue-200)){
 				
-				navs.eq(i).addClass("selected");
+				anchors.eq(i).addClass("selected");
 				break;
 			}
 		}
 	})
-}
+};
 
-// 添加css前缀
+// 添加css前缀，返回css对象
 YD.addPrefix=function(prop, value, prefixs) {
   var cssObj = {};
   cssObj[prop] = value;
@@ -144,15 +127,15 @@ YD.addPrefix=function(prop, value, prefixs) {
     cssObj[prefixs[i] + prop] = value;
   }
   return cssObj;
-}
+};
 
 // 设置可编辑模式下，模块拖拽功能，传入模块父元素
 YD.drag=function(dom){
 	var url=window.location.href;
-	if(url.indexOf('static_edit') !=-1 ){
+	if(YD.isEditmode){
 	      dom.sortable({ revert: true });
 	  }
-}
+};
 
 // 侧边导航与头图重叠时，隐藏侧边导航，dom是侧边栏dom对象，y=头图高度+头部导航高度（193px）
 YD.toggleAside=function(dom,y){
@@ -166,281 +149,31 @@ YD.toggleAside=function(dom,y){
     		dom.fadeOut();
     	}
     })
-}
+};
 
-// 给css样式添加私有前缀
-YD.prefix=function(property,value){
-	return '{"'+property+'":"'+value+'","-ms-'+property+'":"'+value+'","-moz-'+property+'":"'+value+'","-webkit-'+property+'":"'+value+'","-o-'+property+'":"'+value+'"}';
-}
-
-
-/*--------------------------------------组件封装PC端---------------------------------------------*/
-
-/*封装“无缝滚动”函数组件*/
-	//【html结构】：clearfix为清浮动类
-	/*<div id="test">
-		<ul class="tabsRollPcUl clearfix">
-			<li></li>
-		</ul>
-		<div class="tabsRollPcNav clearfix"></div>
-	</div>*/
-
-	//【调用方法】
-	// var test=new YQHtabsRollPc();
-	// test.tabRoll({
-	// 	id:'test',
-	// 	time:1000    
-	// });
-
-	function YQHtabsRollPc(){
-		this.opt={
-			id:'',
-			time:4000
-		};
-		this.oWrap=null;
-		this.oUl=null;
-		this.aLi=null;
-		this.nav=null;
-		this.aSpan=null;
-		this.arrowLf=null;
-		this.arrowRt=null;
-
-		this.numWrap=0;
-		this.numer=0;
-		this.timer=null;
-		this.num1=0;
-	    this.num2=0;
-	    this.imgLeft=0;
-	};
-	YQHtabsRollPc.prototype.tabRoll=function(opt){
-		$.extend(this.opt,opt);
-		var This=this;
-		this.init();		//初始化
-		this.inerVal();		//定时器
-		this.btnNavEvent();	//鼠标点击导航图标按钮
-		this.btnArrowEvent();	//鼠标点击箭头按钮
-		this.mouseStaEnd();	//用户移入关闭定时器,离开开启定时器
-
-		//可视区域改变时重新执行 初始化and鼠标点击按钮
-		$(window).resize(function(event) {
-			This.init();
-			This.btnNavEvent();
-		});
-	};
-	YQHtabsRollPc.prototype.init=function(){
-		var str='';
-		var This=this;
-		this.oWrap=$('#'+this.opt.id);
-		this.oUl=this.oWrap.find('.tabsRollPcUl');
-		this.aLi=this.oWrap.find('li');
-		this.aImg=this.oWrap.find('img');
-		this.nav=this.oWrap.find('.tabsRollPcNav');
-		this.numWrap=this.oWrap.width();
-		this.arrowLf=this.oWrap.find(".arrow-left");
-		this.arrowRt=this.oWrap.find(".arrow-right");
-		//设置li宽度
-		this.aLi.width(this.numWrap);
-		this.numer=this.aLi[0].offsetWidth;
-
-		//设置ul宽度
-		this.oUl.width((this.aLi.length+1)*this.numer);		
-
-		//设置img margin-left值，让他在li里面始终居中
-		this.imgLeft=this.aImg.width() - this.oWrap.width();
-		this.aImg.css('margin-left',-This.imgLeft/2);
-
-		//动态创建span按钮
-		for(var i=0; i<this.aLi.length; i++){ str+='<span></span>' };
-		this.nav.html(str);
-		this.aSpan=this.nav.find('span');
-		this.aSpan.eq(0).addClass('active');
-	};
-	YQHtabsRollPc.prototype.clearBefore=function(This){
-		This.aLi.each(function(i,element){
-			$(this).removeAttr("style");
-			This.aLi.width(This.numWrap);
-			This.oUl.css('left',-This.num1*This.numer);
-		})
-	}
-	YQHtabsRollPc.prototype.inerVal=function(){
-		var This=this;
-		YQHtabsRollPc.prototype.clearBefore(This);
-		if(this.aLi.length==1){
-	       	this.nav.hide();
-	        return;
-	    };
-	    // clearInterval(This.timer);
-	    this.timer=setInterval(function(){
-	    	
-	        if(This.num1==(This.aLi.length-1)){
-	            This.aLi.eq(0).css('position','relative');
-	            This.aLi.eq(0).css('left',This.aLi.length*This.numer);
-	            This.num1=0;
-	        }else if(This.num1==0){
-	            This.aLi.eq(0).css('position','static');
-	            This.oUl.css('left',0);
-	            This.num2=0;
-	            This.num1++;
-	        }else{
-	            This.num1++;
-	        };
-	        This.num2++;
-	        This.aSpan.each(function(i,element){
-	            $(this).removeClass('active');
-	        });
-	        This.aSpan.eq(This.num1).addClass('active');
-	        This.oUl.animate({left:-This.num2*This.numer},200,function(){
-	            
-	        });
-	    },This.opt.time);
-	};
-	YQHtabsRollPc.prototype.btnNavEvent=function(){
-	    var This=this;
-	    if(this.aLi.length==1){
-	        return;
-	    };
-	    this.aSpan.each(function(i,element){
-	        $(this).click(function(){
-            YQHtabsRollPc.prototype.clearBefore(This);
-	            This.aSpan.each(function(){
-	                $(this).removeClass('active');
-	            });
-	            $(this).addClass('active');
-	            var numIndex=$(this).index();
-	            This.num1=numIndex;
-	            This.num2=numIndex;
-	            This.oUl.animate({left:-numIndex*This.numer},300);
-	        });
+// 轮播图
+flexslider();
+function flexslider(){
+	if(YD.isEditmode){
+		// 编辑模式下
+	    $('.flexslider').css({
+	        'overflow-x': 'hidden',
+	        'overflow-y': 'auto'
 	    });
-	};
-	YQHtabsRollPc.prototype.btnArrowEvent=function(){
-	    var This=this;
-	    if(this.aLi.length==1){
-	        return;
-	    };
-
-	        this.arrowLf.click(function(){
-              YQHtabsRollPc.prototype.clearBefore(This);
-
-	            This.aSpan.eq(This.num1).removeClass('active');
-
-	            if(This.num1==0){
-	            	This.num1=This.aLi.length-1;
-	            	This.aLi.eq(0).css({"margin-left":This.numer});
-	            	This.aLi.eq(This.aLi.length-1).css({"margin-left":-This.aLi.length*This.numer});
-	            	This.oUl.css({"left":-This.numer});
-	            	This.num2=1;
-	            }else if(This.num1==(This.aLi.length-1)){
-	            	This.aLi.eq(0).css({"margin-left":0});
-	            	This.aLi.eq(This.aLi.length-1).css({"margin-left":0});
-	            	This.oUl.css({"left":-(This.aLi.length-1)*This.numer});
-	            	This.num2=This.aLi.length-1;
-	            	This.num1--;
-	            }else{
-	            	This.num1--;
-	            	
-	            }
-	            This.num2--;
-	            This.oUl.animate({"left":-This.num2*This.numer},300);
-	            This.aSpan.eq(This.num1).addClass('active');
-	        });
-
-	        this.arrowRt.click(function(){
-
-              YQHtabsRollPc.prototype.clearBefore(This);
-
-	            This.aSpan.eq(This.num1).removeClass('active');
-
-	            if(This.num1==(This.aLi.length-1)){
-	            	This.num1=0;
-	            	This.aLi.eq(0).css({"position":"relative","left":This.aLi.length*This.numer});
-	            }else if(This.num1==0){
-	            	This.aLi.eq(0).css({"position":"static"});
-	            	This.oUl.css({"left":0});
-	            	This.num2=0;
-	            	This.num1++;
-	            }else{
-	            	This.num1++;
-	            	
-	            }
-	            This.num2++;
-	            This.oUl.animate({"left":-This.num2*This.numer},300);
-	            This.aSpan.eq(This.num1).addClass('active');
-	        });
-
-	};
-	YQHtabsRollPc.prototype.mouseStaEnd=function(){
-		var This=this;
-		this.oWrap.mouseenter(function(event) {
-			clearInterval(This.timer);
+	}else{
+		// 非编辑模式下
+	    $('.flexslider').css({ 'overflow': 'hidden' });
+	    $('.flexslider').flexslider({
+			animation: "slide",				// 图片变换方式：淡入淡出(fade)或者滑动(slide)
+        	direction: "horizontal",       	// 图片滑动方向：左右(horizontal)、上下(vertical)
+        	directionNav: true, 			// 是否显示左右控制按钮(wap端要设置为false)
+        	slideshow: true,				// 是否自动播放
+        	randomize: false, 				// 是否随机幻灯片
+        	controlNav: false,				// 是否显示控制菜单(小圆点)
+        	animationSpeed: 600,			// 滚动过度效果播放时长
+        	slideshowSpeed: 3000, 			// 自动播放速度毫秒
+        	mousewheel: true, 				// 鼠标滚轮控制图片滑动
+        	pauseOnHover:true			    // 鼠标移入或点击按钮区域后是否继续轮播(建议设置为true)
 		});
-		this.oWrap.mouseleave(function(event) {
-			This.inerVal();
-		});
-	};
-/*end*/
-
-// 侧边栏
-function sidebar(element){
-	var oN=true;
-	var num=600;		// 滚动条滚动到哪里隐藏侧边栏
-	var view=1360;  	// 可视区域小于多少隐藏侧边栏
-
-	init();         		// 初始化
-
-	// 滚动条滚动
-	$(window).scroll(function(event) {
-		if(!oN) return;
-		throttle(scrollT);
-	});
-
-	// 可视区宽度变化
-	$(window).resize(function(event) {
-		throttle(resizeW)
-	});
-
-	function init(){
-		var W=$(window).width(); 
-		var T=$(window).scrollTop();
-		if(W>=view){
-			element.show();
-			oN=true;
-		}else{
-			element.hide();
-			oN=false;
-		};
-		if(T<=num){
-			element.hide();
-		};
-	};
-
-	// 滚动条滚动执行函数
-	function scrollT(){
-		var T=$(window).scrollTop();
-		if(T>=num){
-			element.fadeIn(200)
-		}else{
-			element.fadeOut(200)
-		}
-	}
-
-	// 可视区域变化执行函数
-	function resizeW(){
-		var W=$(window).width();
-		if(W>=view){
-			element.show();
-			oN=true;
-		}else{
-			element.hide();
-			oN=false;
-		}
-	}
-
-	// 封装函数节流方法
-	function throttle(fn,context){		
-		clearTimeout(fn.timer);
-		fn.timer=setTimeout(function(){
-			fn.call(context);
-		},100);
 	}
 };
