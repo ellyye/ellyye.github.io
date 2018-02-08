@@ -8,17 +8,35 @@ $(function(){
 	YD.fontSize=parseFloat(document.documentElement.style.fontSize);
 	
 	//设置模块可拖拽
-	// YD.drag($(".drag-box"));							
+	YD.drag($(".drag-box"));							
 
 	// 苹果手机活动申明
-	// if(hapj.browser.android){		//后台框架：hapj.browser.android在安卓系统下返回true
-	// 	$('.mobilePhoneSystem').hide();
-	// };
+	if(hapj.browser.android){		//后台框架：hapj.browser.android在安卓系统下返回true
+		$('.mobilePhoneSystem').hide();
+	};
+
+	// 跟随导航
+	YD.setNavPosition()
+	$(window).scroll(function(){
+		YD.setNavPosition();
+	})
+
+	// 锚点跳转，跟随高亮
+	YD.hightlightNav($(".zt-nav-wrap li"),$(".nav-target"),"top",3.5)
 
 	// 设置多个水平滚动区域
 	// YD.horizenScroll([193,200,633],"px");
 	
 });
+
+// 设置导航位置
+YD.setNavPosition=function(){
+	var top=10.74;
+	var navDom=$(".zt-nav-box");
+	$(window).scrollTop()>=YD.fontSize*top?
+	navDom.css({"position":"fixed","top":"0"}):
+	navDom.css({"position":"absolute","top":top+"rem"})
+};
 
 // 设置多个水平滚动区域
 // 父容器class：js-horizen-scroll-box
@@ -97,7 +115,8 @@ function flexslider(){
 YD.hightlightNav=function(anchors,targets,position,navHeight){
 	var len=targets.length;
 	var i;
-		
+	
+	// 锚点跳转
 	anchors.click(function(){
 		// $(window).off("scroll");
 		console.log(1);
@@ -114,34 +133,49 @@ YD.hightlightNav=function(anchors,targets,position,navHeight){
 		}
 	});
 
-	$(window).scroll(function(){
-		var len=targets.length;
+	// 跟随高亮
+	function setSelectedNav(scrollTopValue){
 		var scrollTopValue=$(window).scrollTop();
 
 		for(i=len-1;i>=0;i--){
 			var offsetTopValue=targets.eq(i).offset().top;
 
 			if(scrollTopValue>(offsetTopValue-200)){
-				anchors.eq(i).siblings().removeClass("selected");
-				anchors.eq(i).addClass("selected");
+				anchors.eq(i).siblings().removeClass("nav-selected");
+				anchors.eq(i).addClass("nav-selected");
 				break;
 			}
 		}
+	}
+
+	// 首次判断
+	setSelectedNav();
+
+	// 滚动判断
+	$(window).scroll(function(){
+		setSelectedNav();
 	})
 };
 
 //跟随导航
 YD.followNav=function(){
-	var maxScrollH=$(".nav-placeholder").offset().top;
-	$(window).scroll(function(){
-		if($(window).scrollTop()>maxScrollH){
+	
+	var maxScroll=$(".nav-placeholder").offset().top;
+	function setCss(){
+		if($(window).scrollTop()>maxScroll){
 			$(".follow-nav").css({"position":"fixed"});
 		}else{
 			$(".follow-nav").css({"position":"static"});
 		}
-		
+	}
+
+	// 首次判断
+	setCss();
+	// 滚动判断
+	$(window).scroll(function(){
+		setCss();
 	})
-} ;
+};
 
 // 水平滚动导航
 YD.navScroll=function(navBox,boxW,fontSize){

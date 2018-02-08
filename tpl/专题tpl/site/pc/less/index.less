@@ -53,24 +53,46 @@
 /* ************************头图 S*/
 .zt-banner-box{
 	position:relative;
+	z-index: 2;
 	overflow:hidden;
 /* 	height:; */
 }
 .zt-banner-box img{
-        width:100%;
+     width:100%;
 }
-/* .zt-banner-wrap{
-	position:absolute;
-	left:50%;
-	margin-left:-960px;
-	height:;
-} */
+//  .zt-banner-wrap{
+// 	position:absolute;
+// 	left:50%;
+// 	margin-left:-960px;
+// 	height:;
+// } 
 /* **************************头图 E */
 
-/* ****************************底部广告 */
+/******************主题块-公共 S****************** */
+.part-box{
+	margin:auto;
+}
+/* *****************主题块-公共 E****************** */
+
+/******************part1-优惠券 S****************** */
+.part1-box{
+
+}
+/* *****************part1-优惠券 E****************** */
+
+/******************part2-商品列表 S****************** */
+.part2-box{
+	
+}
+/* *****************part2-商品列表 E****************** */
+
+/* ****************************友链 S*/
 .bottom-advertise{
+	position: relative;
+	z-index: 1;
+	margin-top:-70px;
 	text-align: center;
-	margin:50px 0;
+	padding:50px 0;
 	font-size:0;
 	a{
 		display: inline-block;
@@ -83,86 +105,42 @@
 		}
 	}
 }
-/* ****************************底部广告 end*/
+/* ****************************友链 E*/
 
 /* ****************************侧边导航 S*/
 .aside-nav {
   position: fixed;
+  z-index: 9;
   left: 50%;
   top:50%;
-  margin-top:-180px;
-  margin-left: 540px;
-  width: 176px;
-  height: 357px;
-  background: url(../images/aside_nav.png) no-repeat center;
+  margin-top:-260px;
+  margin-left:-639px;
+  width: 139px;
+  height: 521px;
+  background: url(https://img.tthunbohui.cn/zhuanti/18248/aside_nav.png) no-repeat center;
   font-size:0;
-  z-index:1;
   ul {
-	  padding-top: 60px;
-	  width: 95px;
+	  padding-top: 62px;
+	  width: 130px;
 	  margin: auto;
 	  text-align: center;
 	  li{
-		  border-bottom: 1px dashed #fff;
-		  a {
-			 .clear-A;
-			  display: block;
-			  height: 42px;
-			  line-height: 42px;
-			  font-size:18px;
-			  color:#fff;
-			  .ellipsis;
-			  &:hover {
-				  color:#feffaa;
-				}
-			}
+		  line-height: 68px;
+		  font-size:22px;
+		  font-weight: bold;
+		  cursor:pointer;
 		}
-		li.selected-nav a{
-		  color: #ff275a;
+		.nav2{
+			color:#e6d6bd;
 		}
 		.back-top{
-			border:none;
-			text-align:center;
-			margin-top:15px;
 			a{
-				width:38px;
-				height:38px;
-				text-align:center;
-				display:inline-block;
-				line-height:38px;
-				border:1px solid #fff;
-				background:#1a3b64;
-				color:#feffaa;
-				border-radius:50%;
-				text-transform:uppercase;
-				font-size:16px;
+				display: block;
+				height:55px;
 			}
 		}
 	}
 }
 /* ****************************侧边导航 E*/
 
-/* **********************************返回顶部 */
-.back-top-box{
-	margin-top:40px;
-	text-align:center;
-	.back-top{
-		width:136px;
-		height:126px;
-		background:url(../images/back_top_bg.png);
-		line-height:120px;
-		display: inline-block;
-	}
-	a{
-		.clear-A;
-		// color:@color;
-		font-size:30px;
-		width:64px;
-		height:72px;
-		line-height:36px;
-		vertical-align:middle;
-		display:inline-block;
 
-	}
-}
-/* **********************************返回顶部  end*/

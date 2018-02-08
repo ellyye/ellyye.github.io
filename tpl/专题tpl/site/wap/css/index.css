@@ -9,122 +9,204 @@ img {
   background-size: 20% auto;
 }
 .mobilePhoneSystem {
-  width: 16rem;
+  width: 15rem;
   margin: auto;
   text-align: center;
-  line-height: 0.75rem;
-  font-size: 0.4rem;
+  line-height: 0.6rem;
+  font-size: 0.32rem;
   background: red;
   color: #fff;
 }
-@keyframes arrowup {
-  0% {
-    transform-origin: 50% 50% 0;
-    -ms-transform-origin: 50% 50% 0;
-    /* IE 9 */
-    -webkit-transform-origin: 50% 50% 0;
-    /* Safari 和 Chrome */
-    -moz-transform-origin: 50% 50% 0;
-    /* Firefox */
-    -o-transform-origin: 50% 50% 0;
-    /* Opera */
-    transform: translateY(0);
-    -ms-transform: translateY(0);
-    /* IE 9 */
-    -moz-transform: translateY(0);
-    /* Firefox */
-    -webkit-transform: translateY(0);
-    /* Safari 和 Chrome */
-    -o-transform: translateY(0);
-    /* Opera */
-    opacity: 1;
-  }
-  100% {
-    transform-origin: 50% 50% 0;
-    -ms-transform-origin: 50% 50% 0;
-    /* IE 9 */
-    -webkit-transform-origin: 50% 50% 0;
-    /* Safari 和 Chrome */
-    -moz-transform-origin: 50% 50% 0;
-    /* Firefox */
-    -o-transform-origin: 50% 50% 0;
-    /* Opera */
-    transform: translateY(-0.75rem);
-    -ms-transform: translateY(-0.75rem);
-    /* IE 9 */
-    -moz-transform: translateY(-0.75rem);
-    /* Firefox */
-    -webkit-transform: translateY(-0.75rem);
-    /* Safari 和 Chrome */
-    -o-transform: translateY(-0.75rem);
-    /* Opera */
-    opacity: 0.1;
-  }
-}
-@-webkit-keyframes arrowup {
-  0% {
-    transform-origin: 50% 50% 0;
-    -ms-transform-origin: 50% 50% 0;
-    /* IE 9 */
-    -webkit-transform-origin: 50% 50% 0;
-    /* Safari 和 Chrome */
-    -moz-transform-origin: 50% 50% 0;
-    /* Firefox */
-    -o-transform-origin: 50% 50% 0;
-    /* Opera */
-    transform: translateY(0);
-    -ms-transform: translateY(0);
-    /* IE 9 */
-    -moz-transform: translateY(0);
-    /* Firefox */
-    -webkit-transform: translateY(0);
-    /* Safari 和 Chrome */
-    -o-transform: translateY(0);
-    /* Opera */
-    opacity: 1;
-  }
-  100% {
-    transform-origin: 50% 50% 0;
-    -ms-transform-origin: 50% 50% 0;
-    /* IE 9 */
-    -webkit-transform-origin: 50% 50% 0;
-    /* Safari 和 Chrome */
-    -moz-transform-origin: 50% 50% 0;
-    /* Firefox */
-    -o-transform-origin: 50% 50% 0;
-    /* Opera */
-    transform: translateY(-0.75rem);
-    -ms-transform: translateY(-0.75rem);
-    /* IE 9 */
-    -moz-transform: translateY(-0.75rem);
-    /* Firefox */
-    -webkit-transform: translateY(-0.75rem);
-    /* Safari 和 Chrome */
-    -o-transform: translateY(-0.75rem);
-    /* Opera */
-    opacity: 0.1;
-  }
-}
-/* *****************BANNER S****************** */
+/******************头图 S****************** */
 .m-pic-box {
   position: relative;
   margin: auto;
-  width: 16rem;
+  width: 15rem;
 }
-.m-pic-wrap {
-  width: 16rem;
-  height: ;
+.m-pic-box img {
+  width: 15rem;
 }
-.m-pic-wrap img {
-  width: 16rem;
-  height: ;
+.banner-box img {
+  height: 699px;
 }
-/* *****************BANNER E****************** */
+/* *****************头图 E****************** */
+/******************主题块-公共 S****************** */
+.part-box {
+  margin: auto;
+  width: 15rem;
+}
+.part-box > img {
+  width: 15rem;
+}
+/* *****************主题块-公共 E****************** */
+/******************part1-现金券 S****************** */
+.coupon-list-box {
+  margin: auto;
+  width: 720px;
+  padding: 20px 0;
+  font-size: 0;
+}
+.coupon-list-box .coupon-box {
+  display: inline-block;
+  vertical-align: top;
+  margin: 4px 8px;
+  width: 164px;
+}
+.coupon-list-box .coupon-box img {
+  width: 164px;
+  height: 119px;
+}
+/* *****************part1-现金券 E****************** */
+/******************part2-商品列表 S****************** */
+.part2-box {
+  font-size: 0;
+  text-align: center;
+}
+.item-list-box {
+  display: inline-block;
+  border: 3px solid #000;
+  padding: 20px 0.5rem;
+  font-size: 0;
+  background: #bf3825;
+}
+.item-list-box .item-row {
+  border-bottom: 1px solid #ab2f1e;
+}
+.item-list-box .item-row .item-box {
+  padding-top: 15px;
+}
+.item-list-box .item-row:first-child .item-box {
+  padding-top: 0;
+}
+.item-list-box .item-box {
+  display: inline-block;
+  vertical-align: top;
+  padding-bottom: 15px;
+  width: 298px;
+  font-size: 22px;
+  text-align: center;
+}
+.item-list-box .item-box .pic-box img {
+  width: 298px;
+  height: 232px;
+}
+.item-list-box .item-box .title3-box {
+  margin-top: 10px;
+  border: 1px solid #fff;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.item-list-box .item-box p {
+  margin: 10px auto auto;
+  width: 245px;
+  border-bottom: 2px solid #000;
+  color: #000;
+  font-weight: bold;
+}
+.item-list-box .item-box .price-box {
+  margin-top: 10px;
+  color: #fff;
+}
+.item-list-box .item-box .price-box s {
+  margin-left: 10px;
+  font-size: 18px;
+}
+.item-list-box .item-box .btn-box {
+  margin-top: 10px;
+  font-size: 0;
+}
+.item-list-box .item-box .coupon-btn {
+  display: inline-block;
+}
+.item-list-box .item-box .coupon-btn img {
+  width: 171px;
+  height: 35px;
+}
+.item-list-box .item-box:first-child {
+  padding-right: 0.5rem;
+  border-right: 1px solid #ab2f1e;
+}
+.item-list-box .item-box:last-child {
+  padding-left: 0.5rem;
+}
+.watch-box .btn-box {
+  position: absolute;
+  left: 0;
+  top: 390px;
+  width: 100%;
+  text-align: center;
+  font-size: 0;
+}
+.watch-box .btn-box a {
+  display: inline-block;
+  margin: 0 60px;
+  width: 200px;
+  line-height: 36px;
+  color: #b53c29;
+  background: #e9d8be;
+  font-size: 22px;
+}
+/* *****************part2-商品列表 E****************** */
+/* *****************导航 S****************** */
+.zt-nav-box {
+  left: 0;
+  z-index: 9;
+  width: 100%;
+}
+.zt-nav-wrap {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  margin: auto;
+  width: 15rem;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 64px;
+  text-align: center;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+  background-image: url(https://img.tthunbohui.cn/zhuanti/18232/bg.jpg);
+}
+.zt-nav-wrap li {
+  -webkit-box-flex: 1;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 1;
+  /* OLD - Firefox 19- */
+  -webkit-flex: 1;
+  /* Chrome */
+  -ms-flex: 1;
+  /* IE 10 */
+  flex: 1;
+  width: 16.67%;
+  border-right: 2px solid #000;
+  background: url(https://img.tthunbohui.cn/zhuanti/18232/nav_bg.png) repeat-x top left;
+  background-size: 120px;
+  font-size: 22px;
+  color: #fff;
+  font-weight: bold;
+}
+.zt-nav-wrap li:last-child {
+  border: none;
+}
+.zt-nav-wrap .nav2 {
+  background-position-y: -94px;
+  color: #000;
+}
+/* *****************导航 E****************** */
 /* *****************底部链接 S****************** */
 .bottom-link {
   margin: auto;
-  margin-bottom: 0.5rem;
-  width: 15.4rem;
+  padding: 20px 0;
+  width: 14.6rem;
 }
 .bottom-link:after {
   content: '';
@@ -133,34 +215,11 @@ img {
 }
 .bottom-link li {
   float: left;
-  margin: 0.25rem 0.35rem;
+  margin: 8px 8px;
 }
 .bottom-link li img {
   display: block;
-  width: 7.0rem;
-  height: 3.825rem;
+  width: 6.9rem;
+  height: 3.77rem;
 }
 /* *****************底部链接 E****************** */
-/* *****************导航 S****************** */
-.zt-nav-box {
-  width: 100%;
-  background: url(../images/nav_bg.jpg);
-  padding: 0.3rem 0;
-}
-.zt-nav-wrap {
-  margin: auto;
-  width: 15.5rem;
-  font-size: 0;
-  text-align: center;
-}
-.zt-nav-wrap li {
-  display: inline-block;
-  margin: 0 0.125rem;
-  background: #fff;
-}
-.zt-nav-wrap li a {
-  display: block;
-  padding: 0.125rem 0.375rem;
-  font-size: 0.5rem;
-}
-/* *****************导航 E****************** */

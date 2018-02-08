@@ -9,11 +9,11 @@ img {
   background-size: 20% auto;
 }
 .mobilePhoneSystem {
-  width: 16rem;
+  width: 15rem;
   margin: auto;
   text-align: center;
-  line-height: 0.75rem;
-  font-size: 0.4rem;
+  line-height: 0.6rem;
+  font-size: 0.32rem;
   background: red;
   color: #fff;
 }

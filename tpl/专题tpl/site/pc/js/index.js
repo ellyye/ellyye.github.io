@@ -5,16 +5,19 @@ YD.isEditmode=(location.href.indexOf("static_edit")!==-1);
 
 $(function(){
 	// pc预约到婚博会【并领券】弹窗
-	// hapj(function(H) { H.get('bootstrap').initAppointHbh() });
-	// $('.appointment').each(function() {
-	//     $(this).attr('storeid', $(this).attr('href'))
-	// })
+	hapj(function(H) { H.get('bootstrap').initAppointHbh() });
+	$('.appointment').each(function() {
+	    $(this).attr('storeid', $(this).attr('href'))
+	})
 
 	//设置模块可拖拽
-	// YD.drag($(".drag-box"));							
+	YD.drag($(".drag-box"));							
 
 	//头图与侧边栏重叠时，隐藏侧边栏
-	// 	YD.toggleAside($(".aside-nav"),1000+193);
+	YD.toggleAsideNav(721+193,$(".slice-box .btn-box").offset().top);
+
+	// 锚点跳转，跟随高亮
+	YD.hightlightNav($(".aside-nav .nav"),$(".nav-target"),125);
 
 	//单个倒计时,手动给定时间
 	// YD.timeCounter($("timer-box"),"2017/6/18 23:59:59");
@@ -85,24 +88,18 @@ YD.getTime=function(deadline){
 };
 
 // 锚点跳转，跟随高亮
-YD.hightlightNav=function(anchors,targets){
+YD.hightlightNav=function(anchors,targets,offset){
 	var len=targets.length;
-
+	// 锚点跳转
 	anchors.click(function(){
-		// $(window).off("scroll");
 
 		var i=anchors.index($(this));
-		var offsetTopValue=targets.eq(i).offset().top;
-		var that=$(this);
-
+		var offsetTopValue=targets.eq(i).offset().top-offset;
 		$(window).scrollTop(offsetTopValue);
-		that.siblings().removeClass("selected");
-		that.addClass("selected");
-		
 	})
 
-	$(window).scroll(function(){
-		var len=targets.length;
+	// 跟随高亮
+	function setNavSelected(){
 		var scrollTopValue=$(window).scrollTop();
 
 		anchors.eq(i).siblings().removeClass("selected");
@@ -116,6 +113,12 @@ YD.hightlightNav=function(anchors,targets){
 				break;
 			}
 		}
+	}
+	// 首次判断
+	setNavSelected();
+	// 滚动判断
+	$(window).scroll(function(){
+		setNavSelected();
 	})
 };
 
@@ -137,22 +140,32 @@ YD.drag=function(dom){
 	  }
 };
 
-// 侧边导航与头图重叠时，隐藏侧边导航，dom是侧边栏dom对象，y=头图高度+头部导航高度（193px）
-YD.toggleAside=function(dom,y){
-    dom.removeAttr("style");
-    var top=y-parseInt(dom.css("top"));
+// 侧边导航与头图重叠时，隐藏侧边导航，y=头图高度+头部导航高度（193px）
+YD.toggleAsideNav=function(min,max){
+	var dom=$(".aside-nav");
+    var top=min-parseInt(dom.css("top"));
+
+    // 首次判断
+    if(max){
+    	($(window).scrollTop()>=min)&&($(window).scrollTop()<=max)?dom.show():dom.hide();
+    }else{
+    	$(window).scrollTop()>=min?dom.show():dom.hide();
+    }
+
+    // 滚动判断
     $(window).scroll(function(){
         var scroll=$(window).scrollTop();
-    	if(scroll>=top){
-    		dom.fadeIn();
-    	}else{
-    		dom.fadeOut();
-    	}
+        if(max){
+        	(scroll>=min)&&(scroll<=max)?dom.fadeIn():dom.fadeOut();
+        	
+        }else{
+        	scroll>=top?dom.fadeIn():dom.fadeOut();
+        }
     })
 };
 
 // 轮播图
-flexslider();
+// flexslider();
 function flexslider(){
 	if(YD.isEditmode){
 		// 编辑模式下

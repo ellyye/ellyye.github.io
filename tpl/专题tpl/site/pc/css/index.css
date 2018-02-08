@@ -11,23 +11,200 @@ a:hover {
 html {
   background: #fff;
 }
-/* ************************头图 */
-.yd-banner {
+/* ************************头图 S*/
+.zt-banner-box {
   position: relative;
+  z-index: 2;
   overflow: hidden;
-  height: 600px;
+  /* 	height:; */
+}
+.zt-banner-box img {
+  width: 100%;
+}
+/* .zt-banner-wrap{
+	position:absolute;
+	left:50%;
+	margin-left:-960px;
+	height:;
+} */
+/* **************************头图 E */
+.main-container {
+  position: relative;
+  margin-top: -5px;
+}
+.main-container:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 1899px;
+  background: url(https://img.tthunbohui.cn/zhuanti/18248/bg1.png) no-repeat top center;
+}
+/******************主题块-公共 S****************** */
+.part-box {
+  position: relative;
+  z-index: 1;
+  margin: auto;
+  width: 1008px;
+}
+/* *****************主题块-公共 E****************** */
+/******************part1-优惠券 S****************** */
+.part1-box {
+  padding-top: 10px;
+  padding-bottom: 85px;
+  background: url(https://img.tthunbohui.cn/zhuanti/18248/bg.jpg);
+}
+.coupon-list-box {
+  font-size: 0;
+}
+.coupon-list-box .coupon-box {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px 2px;
+}
+.coupon-list-box .coupon-box img {
+  width: 164px;
+  height: 119px;
+}
+/* *****************part1-优惠券 E****************** */
+.break-line {
+  position: relative;
+  height: 8px;
+  background: url(https://img.tthunbohui.cn/zhuanti/18248/nav_bg.png) repeat-x top;
+}
+.break-line:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  margin-left: -768px;
+  width: 159px;
+  height: 255px;
+  background: url(https://img.tthunbohui.cn/zhuanti/18248/deco.png) no-repeat center;
+}
+/******************part2-商品列表 S****************** */
+.part2-box {
+  position: relative;
+  margin-top: -88px;
+  width: 998px;
+  font-size: 0;
   text-align: center;
 }
-.yd-banner .yd-banmner-body {
-  position: absolute;
-  left: 50%;
-  margin-left: -960px;
+.global-img {
+  display: inline-block;
+  background: none;
 }
-/* **************************end */
+.item-list-box {
+  margin-top: 22px;
+  border: 3px solid #000;
+  padding: 20px 0;
+  font-size: 0;
+  background: #bf3825;
+}
+.item-list-box .item-box {
+  display: inline-block;
+  vertical-align: top;
+  border-bottom: 1px solid #ab2f1e;
+  border-right: 1px solid #ab2f1e;
+  padding: 15px;
+  width: 298px;
+  font-size: 22px;
+  text-align: center;
+}
+.item-list-box .item-box:first-child {
+  padding-left: 0;
+}
+.item-list-box .item-box:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+.item-list-box .item-box .pic-box img {
+  width: 298px;
+  height: 232px;
+}
+.item-list-box .item-box .title3-box {
+  margin-top: 10px;
+  border: 1px solid #e7d9bf;
+  color: #e7d9bf;
+  font-size: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.item-list-box .item-box p {
+  margin: 10px auto auto;
+  width: 235px;
+  border-bottom: 2px solid #000;
+  color: #000;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.item-list-box .item-box .price-box {
+  margin-top: 10px;
+  color: #e7d9bf;
+}
+.item-list-box .item-box .price-box s {
+  margin-left: 10px;
+  font-size: 18px;
+}
+.item-list-box .item-box .btn-box {
+  margin-top: 10px;
+  font-size: 0;
+}
+.item-list-box .item-box .coupon-btn {
+  display: inline-block;
+}
+.item-list-box .item-box .coupon-btn img {
+  width: 171px;
+  height: 35px;
+}
+.item-list-box .item-box:first-child {
+  padding-right: 15px;
+  border-right: 1px solid #ab2f1e;
+}
+.item-list-box .item-box:last-child {
+  padding-left: 15px;
+}
+.item-list-box .item-row:first-child .item-box {
+  padding-top: 0;
+}
+/* *****************part2-商品列表 E****************** */
+.slice-box {
+  position: relative;
+  margin-top: 22px;
+  background: url(https://img.tthunbohui.cn/zhuanti/18248/bg2.jpg) no-repeat bottom center;
+}
+.slice-box img {
+  margin: auto;
+  width: 1000px;
+}
+.slice-box .btn-box {
+  position: absolute;
+  left: 0;
+  top: 403px;
+  width: 100%;
+  text-align: center;
+  font-size: 0;
+}
+.slice-box .btn-box a {
+  display: inline-block;
+  margin: 0 60px;
+  width: 200px;
+  line-height: 36px;
+  color: #b53c29;
+  background: #e9d8be;
+  font-size: 22px;
+  font-weight: bold;
+}
 /* ****************************底部广告 */
 .bottom-advertise {
+  position: relative;
+  z-index: 1;
+  margin-top: -70px;
   text-align: center;
-  margin: 50px 0;
+  padding: 50px 0;
   font-size: 0;
 }
 .bottom-advertise a {
@@ -44,80 +221,33 @@ html {
 /* ****************************侧边导航 S*/
 .aside-nav {
   position: fixed;
+  z-index: 9;
   left: 50%;
   top: 50%;
-  margin-top: -180px;
-  margin-left: 540px;
-  width: 176px;
-  height: 357px;
-  background: url(../images/aside_nav.png) no-repeat center;
+  margin-top: -260px;
+  margin-left: -639px;
+  width: 139px;
+  height: 521px;
+  background: url(https://img.tthunbohui.cn/zhuanti/18248/aside_nav.png) no-repeat center;
   font-size: 0;
-  z-index: 1;
 }
 .aside-nav ul {
-  padding-top: 60px;
-  width: 95px;
+  padding-top: 62px;
+  width: 130px;
   margin: auto;
   text-align: center;
 }
 .aside-nav ul li {
-  border-bottom: 1px dashed #fff;
+  line-height: 68px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
 }
-.aside-nav ul li a {
-  text-decoration: none;
-  display: block;
-  height: 42px;
-  line-height: 42px;
-  font-size: 18px;
-  color: #fff;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.aside-nav ul li a:hover {
-  color: #feffaa;
-}
-.aside-nav ul li.selected-nav a {
-  color: #ff275a;
-}
-.aside-nav ul .back-top {
-  border: none;
-  text-align: center;
-  margin-top: 15px;
+.aside-nav ul .nav2 {
+  color: #e6d6bd;
 }
 .aside-nav ul .back-top a {
-  width: 38px;
-  height: 38px;
-  text-align: center;
-  display: inline-block;
-  line-height: 38px;
-  border: 1px solid #fff;
-  background: #1a3b64;
-  color: #feffaa;
-  border-radius: 50%;
-  text-transform: uppercase;
-  font-size: 16px;
+  display: block;
+  height: 55px;
 }
 /* ****************************侧边导航 E*/
-/* **********************************返回顶部 */
-.back-top-box {
-  margin-top: 40px;
-  text-align: center;
-}
-.back-top-box .back-top {
-  width: 136px;
-  height: 126px;
-  background: url(../images/back_top_bg.png);
-  line-height: 120px;
-  display: inline-block;
-}
-.back-top-box a {
-  text-decoration: none;
-  font-size: 30px;
-  width: 64px;
-  height: 72px;
-  line-height: 36px;
-  vertical-align: middle;
-  display: inline-block;
-}
-/* **********************************返回顶部  end*/
