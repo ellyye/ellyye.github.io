@@ -21,10 +21,6 @@ function transExhib(ExType,start,end,curAddr,nxtAddr){
 	    var otherPop=$(".other-pop");
 	    var addrBox=$('.expo_time');
 
-	    //换届弹窗点击关闭
-		$('.tc_close,.go_next').click(function(){
-      		$(this).parent().hide()
-    	})
 
 		switch(ExType){
 			// 大展
@@ -48,6 +44,11 @@ function transExhib(ExType,start,end,curAddr,nxtAddr){
         	var Top = ($(window).height()-$('.expo_tc').height())/2;
         	var Left = ($(window).width()-$('.expo_tc').width())/2;
         	pop.children(".expo_tc").css({'top':Top,'left':Left});
+
+		    //换届弹窗点击关闭
+			$('.tc_close,.go_next').click(function(){
+	      		pop.hide()
+	    	})
 
         	now-start>0?addrBox.text(nxtAddr):addrBox.text(curAddr);
         	now - start > 0 && now - end <0 && pop.show();
