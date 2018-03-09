@@ -6,37 +6,36 @@ YD.isEditmode=(location.href.indexOf("static_edit")!==-1);
 $(function(){
 	// 获取根元素字号
 	YD.fontSize=parseFloat(document.documentElement.style.fontSize);
-	
-	//设置模块可拖拽
-	YD.drag($(".drag-box"));							
+
+	if(YD.isEditmode){
+		// 编辑模式下
+		$(".simu-btn").show();
+
+		//设置模块可拖拽
+		YD.drag($(".drag-box"));
+
+		// 点击保存编辑时
+        $(".simu-btn").click(function(){
+            // 初始化
+            navBox.removeAttr("style");
+            $(".simu-btn").removeAttr("style");
+            
+            // 保存编辑
+            $(".save_edit").trigger("click");
+        });
+    }else{
+    	// 非编辑模式下
+
+    }
+
+    // 设置多个水平滚动区域
+    // YD.horizenScroll([193,200,633],"px");							
 
 	// 苹果手机活动申明
 	if(hapj.browser.android){		//后台框架：hapj.browser.android在安卓系统下返回true
 		$('.mobilePhoneSystem').hide();
-	};
-
-	// 跟随导航
-	YD.setNavPosition()
-	$(window).scroll(function(){
-		YD.setNavPosition();
-	})
-
-	// 锚点跳转，跟随高亮
-	YD.hightlightNav($(".zt-nav-wrap li"),$(".nav-target"),"top",3.5)
-
-	// 设置多个水平滚动区域
-	// YD.horizenScroll([193,200,633],"px");
-	
+	}
 });
-
-// 设置导航位置
-YD.setNavPosition=function(){
-	var top=10.74;
-	var navDom=$(".zt-nav-box");
-	$(window).scrollTop()>=YD.fontSize*top?
-	navDom.css({"position":"fixed","top":"0"}):
-	navDom.css({"position":"absolute","top":top+"rem"})
-};
 
 // 设置多个水平滚动区域
 // 父容器class：js-horizen-scroll-box
@@ -65,6 +64,9 @@ YD.horizenScroll=function(widthArr,unit){
 };
 
 // 页面滚动到指定位置才显示
+// target:切换显示的目标
+// reference:页面中的参照元素
+// offset:页面中的参照元素
 YD.scrollShow=function(target,reference,offset){
 	target.css({"display":"none"});
 	$(window).scroll(function(){
@@ -77,18 +79,86 @@ YD.scrollShow=function(target,reference,offset){
 };
 
 // 扩大点击范围
-YD.expandClickArea=function(target){
+YD.expandClickArea=function(){
+    var target=$(".js-expand-click");
+    target.css({"cursor":"pointer"})
 	target.click(function(){
 		var url=$(this).find("a").attr("href");
 		location.href=url;
-	})
+	});
 };
 
+// 元素跟随
+YD.scrollFollow=function(){
+	var ele=$(".js-follow");
+	var offsetTop=ele.parent().offset().top;
+	ele.css({"padding":"10px 0","background":"#fff"});
+	$(window).scrollTop()>offsetTop?
+		ele.css({"position":"fixed","width":"100%","top":"0","left":"0"})
+		:ele.css({"position":"static"});
+
+	$(window).scroll(function(){
+		$(window).scrollTop()>offsetTop?
+			ele.css({"position":"fixed","width":"100%","top":"0","left":"0"})
+			:ele.css({"position":"static"});
+	})
+}
+
+// 锚点定位
+YD.anchorTo=function(offset){
+	!offset&&offset=0;
+	var navs=$(".js-anchor li");
+	var target=$(".js-nav-target");
+	navs.css({"cursor":"pointer"});
+	navs.click(function(){
+		var i=navs.index($(this));
+		$(this).addClass("selected").siblings().removeClass("selected");
+		$(window).scrollTop(target.eq(i).offset().top+offset);
+	})
+}
+
+// 导航自动高亮
+YD.autoHightlightNav=function(){
+	var navs=$(".js-auto-highlight li");
+	
+	function setNavSelected(){
+		var scrollTopValue=$(window).scrollTop();
+
+		navs.eq(i).siblings().removeClass("selected");
+
+		for(var i=len-1;i>=0;i--){
+			var offsetTopValue=targets.eq(i).offset().top;
+
+			if(scrollTopValue>(offsetTopValue-200)){
+				
+				navs.eq(i).addClass("selected");
+				break;
+			}
+		}
+	}
+	// 首次判断
+	setNavSelected();
+	// 滚动判断
+	$(window).scroll(function(){
+		setNavSelected();
+	})
+}
+
 // 轮播图
+/*html:
+<div class="flexslider">
+	<ul class="slides">
+		<li><img src="../images/weddingExpoFile-extend-img80.jpg"/></li>
+		<li><img src="../images/weddingExpoFile-extend-img80.jpg"/></li>
+		<li><img src="../images/weddingExpoFile-extend-img80.jpg"/></li>
+		<li><img src="../images/weddingExpoFile-extend-img80.jpg"/></li>
+	</ul>
+</div>*/
 flexslider();
 function flexslider(){
 	if(YD.isEditmode){
 		// 编辑模式下
+		$('.flexslider').height($('.flexslider img').height());
 	    $('.flexslider').css({
 	        'overflow-x': 'hidden',
 	        'overflow-y': 'auto'
@@ -96,85 +166,19 @@ function flexslider(){
 	}else{
 		// 非编辑模式下
 	    $('.flexslider').css({ 'overflow': 'hidden' });
-	    $('.flexslider').flexslider({
+	    $(".flexslider").flexslider({
 			animation: "slide",				// 图片变换方式：淡入淡出(fade)或者滑动(slide)
         	direction: "horizontal",       	// 图片滑动方向：左右(horizontal)、上下(vertical)
         	directionNav: true, 			// 是否显示左右控制按钮(wap端要设置为false)
         	slideshow: true,				// 是否自动播放
         	randomize: false, 				// 是否随机幻灯片
-        	controlNav: false,				// 是否显示控制菜单(小圆点)
+        	controlNav: true,				// 是否显示控制菜单(小圆点)
         	animationSpeed: 600,			// 滚动过度效果播放时长
         	slideshowSpeed: 3000, 			// 自动播放速度毫秒
         	mousewheel: true, 				// 鼠标滚轮控制图片滑动
         	pauseOnHover:true			    // 鼠标移入或点击按钮区域后是否继续轮播(建议设置为true)
 		});
 	}
-};
-
-// 锚点跳转，跟随高亮
-YD.hightlightNav=function(anchors,targets,position,navHeight){
-	var len=targets.length;
-	var i;
-	
-	// 锚点跳转
-	anchors.click(function(){
-		// $(window).off("scroll");
-		console.log(1);
-
-		i=anchors.index($(this));
-		var offsetTopValue=targets.eq(i).offset().top;
-		var that=$(this);
-        if(position==="bottom"){
-            // 导航在底部
-		    $(window).scrollTop(offsetTopValue);
-        }else if(position==="top"){
-            // 导航在顶部时，减去导航高度
-			$(window).scrollTop(offsetTopValue-navHeight*YD.fontSize);
-		}
-	});
-
-	// 跟随高亮
-	function setSelectedNav(scrollTopValue){
-		var scrollTopValue=$(window).scrollTop();
-
-		for(i=len-1;i>=0;i--){
-			var offsetTopValue=targets.eq(i).offset().top;
-
-			if(scrollTopValue>(offsetTopValue-200)){
-				anchors.eq(i).siblings().removeClass("nav-selected");
-				anchors.eq(i).addClass("nav-selected");
-				break;
-			}
-		}
-	}
-
-	// 首次判断
-	setSelectedNav();
-
-	// 滚动判断
-	$(window).scroll(function(){
-		setSelectedNav();
-	})
-};
-
-//跟随导航
-YD.followNav=function(){
-	
-	var maxScroll=$(".nav-placeholder").offset().top;
-	function setCss(){
-		if($(window).scrollTop()>maxScroll){
-			$(".follow-nav").css({"position":"fixed"});
-		}else{
-			$(".follow-nav").css({"position":"static"});
-		}
-	}
-
-	// 首次判断
-	setCss();
-	// 滚动判断
-	$(window).scroll(function(){
-		setCss();
-	})
 };
 
 // 水平滚动导航
@@ -196,7 +200,7 @@ YD.isMoble=function(){
 	return Boolean(navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i));
 };
 
-// 首屏效果（手指向上滑动，首屏向上滑出）
+// 首屏动画（手指向上滑动，首屏向上滑出）
 YD.firstScreenMoveup=function(){
 	var startY=0;
 	var firstScreen=$(".first-screen");
@@ -252,8 +256,15 @@ YD.drag=function(dom){
 	  }
 };
 
-// 多个倒计时，参数：显示倒计时的容器
-YD.SetTimer=function(timerBox){
+/*
+ 多个倒计时，截止时间可编辑
+html结构：
+<div class="timer-box">
+	<span class="time">2017/9/5 23:59:59</span>
+</div>
+*/
+YD.SetTimer=function(){
+	var timerBox=$(".timer-box");
 	if(!YD.isEditmode){
 		// 非编辑模式下
 		timerBox.each(function(){
@@ -263,7 +274,7 @@ YD.SetTimer=function(timerBox){
 	}
 };
 
-// 单个倒计时，参数：显示倒计时的容器，截止时间，截止提示文字
+// 单个倒计时,手动给定时间，参数：显示倒计时的容器，截止时间，截止提示文字
 YD.timeCounter=function(timerBox,deadline,text){
 	var time=YD.getTime(deadline);//获取时分秒
 	(text===undefined)&&(text="活动已截止");
@@ -276,7 +287,7 @@ YD.timeCounter=function(timerBox,deadline,text){
 	}else{
 		timerBox.html(text);
 	}
-};
+}
 	
 // 获取天、时、分、秒
 YD.getTime=function(deadline){

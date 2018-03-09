@@ -15,10 +15,13 @@
 	
 </head>
 <body>
-<!-- 头图 S -->
+	<!--虚拟"保存编辑"按钮-->
+	<span class="simu-btn"></span>
+	
+	<!-- 头图 S -->
 	<div class="m-pic-box banner-box">
 		<div class="m-pic-wrap">
-			<img src="https://img.tthunbohui.cn/zhuanti/18232/banner.jpg" alt="婚嫁首饰-挑选攻略">
+			<img src="../images/banner.jpg" alt="">
 		</div>
 	</div>
 	<!-- 头图 E -->
@@ -28,28 +31,30 @@
 	</div>
 	<!-- part1-现金券 E -->
 
-	<!-- part2-商品列表 S -->
+	<!-- part2-展示模块 S -->
 	<div class="part2-box part-box">
 
 	</div>
-	<!-- part2-商品列表 E -->
+	<!-- part2-展示模块 E -->
 
-	<!-- 友链 S -->
-	<ul class="bottom-link">
-		<li>
-			<a href="javascript:"><img src="http://1.tthunbohui.cn/zhuanti/15108/ad1.jpg" alt=""></a>
-		</li>
-		<li>
-			<a href="javascript:"><img src="http://1.tthunbohui.cn/zhuanti/15108/ad2.jpg" alt=""></a>
-		</li>
-		<li>
-			<a href="javascript:"><img src="http://1.tthunbohui.cn/zhuanti/15108/ad3.jpg" alt=""></a>
-		</li>
-		<li>
-			<a href="javascript:"><img src="http://1.tthunbohui.cn/zhuanti/15108/ad4.jpg" alt=""></a>
-		</li>
-	</ul>
-	<!-- 友链 E -->
+	<!-- 友链 S-->
+	<div class="friendlink-box drag-box">
+		<div class="friendlink-wrap">
+			<a href="javascript:" target="_blank" class="editer-group">
+				<img src="http://1.tthunbohui.cn/zhuanti/15108/ad1.jpg" alt="">
+			</a>
+			<a href="javascript:" target="_blank" class="editer-group">
+				<img src="http://1.tthunbohui.cn/zhuanti/15108/ad2.jpg" alt="">
+			</a>
+			<a href="javascript:" target="_blank" class="editer-group">
+				<img src="http://1.tthunbohui.cn/zhuanti/15108/ad3.jpg" alt="">
+			</a>
+			<a href="javascript:" target="_blank" class="editer-group">
+				<img src="http://1.tthunbohui.cn/zhuanti/15108/ad4.jpg" alt="">
+			</a>
+		</div>
+	</div>
+	<!-- 友链 E-->
 
 	<!-- 导航 S-->
 	<div class="nav-placeholder">
@@ -69,6 +74,14 @@
 		<div class="bg-middle"></div>
 		<div class="bg-bottom"></div>
 	</div>
+	
+	<!-- 分享到... S-->
+	<div class="_ztshare">
+	    <div class="img_share">
+	        <img src="http://3.tthunbohui.cn/zhuanti/5346/share.png">
+	    </div>
+	</div>
+	<!-- 分享到... E-->
 
 	
 
@@ -77,11 +90,16 @@
 
 <style>
 	body{
-		background:#e8dfd0 url(https://img.tthunbohui.cn/zhuanti/18232/bg.jpg) top center;
-		-webkit-background-size: 464px;
-		background-size: 464px;
+		background:#fff url(../images/body_bg.jpg) top center;
+		background-repeat: repeat-y;
+		-webkit-background-size: 15rem;
+		background-size: 15rem;
 	}
-</style>	
+</style>
+<script>
+	// 分享功能
+	hapj.get('share').active(ele,{url:XXX,title:XXX,content:"分享文案"});
+</script>	
 	
 	<script src="../js/jquery-1.9.1.js"></script>
 	<!-- 轮播图 -->

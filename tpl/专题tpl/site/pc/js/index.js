@@ -4,26 +4,45 @@ var YD={};
 YD.isEditmode=(location.href.indexOf("static_edit")!==-1);
 
 $(function(){
+	if(YD.isEditmode){
+		// 编辑模式下
+		$(".simu-btn").show();
+
+		//设置模块可拖拽
+		YD.drag($(".drag-box"));
+
+		// 点击保存编辑时
+        $(".simu-btn").click(function(){
+            // 初始化
+            navBox.removeAttr("style");
+            $(".simu-btn").removeAttr("style");
+            
+            // 保存编辑
+            $(".save_edit").trigger("click");
+        });
+    }else{
+    	// 非编辑模式下
+
+    }							
+
+	//头图与侧边栏重叠时，隐藏侧边栏
+	// YD.toggleAsideNav(721+193,$(".slice-box .btn-box").offset().top);
+
+	// 锚点跳转，跟随高亮
+	// YD.hightlightNav($(".aside-nav .nav"),$(".nav-target"),125);
+
+	//多个倒计时，截止时间可编辑
+	// YD.SetTimer($(".time-counter-body"));
+
+	//单个倒计时,手动给定时间
+	// YD.timeCounter($("timer-box"),"2017/6/18 23:59:59");
+	
+
 	// pc预约到婚博会【并领券】弹窗
 	hapj(function(H) { H.get('bootstrap').initAppointHbh() });
 	$('.appointment').each(function() {
 	    $(this).attr('storeid', $(this).attr('href'))
 	})
-
-	//设置模块可拖拽
-	YD.drag($(".drag-box"));							
-
-	//头图与侧边栏重叠时，隐藏侧边栏
-	YD.toggleAsideNav(721+193,$(".slice-box .btn-box").offset().top);
-
-	// 锚点跳转，跟随高亮
-	YD.hightlightNav($(".aside-nav .nav"),$(".nav-target"),125);
-
-	//单个倒计时,手动给定时间
-	// YD.timeCounter($("timer-box"),"2017/6/18 23:59:59");
-
-	//多个倒计时，截止时间可编辑
-	// YD.SetTimer($(".time-counter-body"));
 
 });
 
@@ -35,8 +54,89 @@ YD.expandClickArea=function(target){
 	})
 };
 
-// 多个倒计时，截止时间可编辑，参数：显示倒计时的容器
-YD.SetTimer=function(timerBox){
+// 头图动画
+YD.bannerAnime=function(){
+	var screenH=window.screen.height;
+	YD.coverBox.css({"padding-top":screenH+"px"});
+	$(window).scroll(function(){
+		var scrollTop=$(window).scrollTop();
+		if(scrollTop<=screenH){
+			// console.log(screenH);
+			$(".cover-main").css({"top":"-"+scrollTop+"px"});
+			$(".cover-bg").css({"top":scrollTop+"px"});
+		}else{
+			$(".cover-main").css({"top":"-"+screenH+"px"});
+			$(".cover-bg").css({"top":screenH+"px"});
+		}
+	})
+}
+
+// 元素跟随
+YD.scrollFollow=function(){
+	var ele=$(".js-follow");
+	var offsetTop=ele.parent().offset().top;
+	ele.css({"padding":"10px 0","background":"#fff"});
+	$(window).scrollTop()>offsetTop?
+		ele.css({"position":"fixed","width":"100%","top":"0","left":"0"})
+		:ele.css({"position":"static"});
+
+	$(window).scroll(function(){
+		$(window).scrollTop()>offsetTop?
+			ele.css({"position":"fixed","width":"100%","top":"0","left":"0"})
+			:ele.css({"position":"static"});
+	})
+}
+
+// 锚点定位
+YD.anchorTo=function(offset){
+	!offset&&offset=0;
+	var navs=$(".js-anchor li");
+	var target=$(".js-nav-target");
+	navs.css({"cursor":"pointer"});
+	navs.click(function(){
+		var i=navs.index($(this));
+		$(this).addClass("selected").siblings().removeClass("selected");
+		$(window).scrollTop(target.eq(i).offset().top+offset);
+	})
+}
+
+// 导航自动高亮
+YD.autoHightlightNav=function(){
+	var navs=$(".js-auto-highlight li");
+	
+	function setNavSelected(){
+		var scrollTopValue=$(window).scrollTop();
+
+		navs.eq(i).siblings().removeClass("selected");
+
+		for(var i=len-1;i>=0;i--){
+			var offsetTopValue=targets.eq(i).offset().top;
+
+			if(scrollTopValue>(offsetTopValue-200)){
+				
+				navs.eq(i).addClass("selected");
+				break;
+			}
+		}
+	}
+	// 首次判断
+	setNavSelected();
+	// 滚动判断
+	$(window).scroll(function(){
+		setNavSelected();
+	})
+}
+
+
+/*
+ 多个倒计时，截止时间可编辑
+html结构：
+<div class="timer-box">
+	<span class="time">2017/9/5 23:59:59</span>
+</div>
+*/
+YD.SetTimer=function(){
+	var timerBox=$(".timer-box");
 	if(!YD.isEditmode){
 		// 非编辑模式下
 		timerBox.each(function(){
@@ -85,42 +185,7 @@ YD.getTime=function(deadline){
 		return time;
 	}
 	return time;
-};
-
-// 锚点跳转，跟随高亮
-YD.hightlightNav=function(anchors,targets,offset){
-	var len=targets.length;
-	// 锚点跳转
-	anchors.click(function(){
-
-		var i=anchors.index($(this));
-		var offsetTopValue=targets.eq(i).offset().top-offset;
-		$(window).scrollTop(offsetTopValue);
-	})
-
-	// 跟随高亮
-	function setNavSelected(){
-		var scrollTopValue=$(window).scrollTop();
-
-		anchors.eq(i).siblings().removeClass("selected");
-
-		for(var i=len-1;i>=0;i--){
-			var offsetTopValue=targets.eq(i).offset().top;
-
-			if(scrollTopValue>(offsetTopValue-200)){
-				
-				anchors.eq(i).addClass("selected");
-				break;
-			}
-		}
-	}
-	// 首次判断
-	setNavSelected();
-	// 滚动判断
-	$(window).scroll(function(){
-		setNavSelected();
-	})
-};
+};	
 
 // 添加css前缀，返回css对象
 YD.addPrefix=function(prop, value, prefixs) {
@@ -165,10 +230,20 @@ YD.toggleAsideNav=function(min,max){
 };
 
 // 轮播图
-// flexslider();
+/*html:
+<div class="flexslider">
+	<ul class="slides">
+		<li><img src="../images/weddingExpoFile-extend-img80.jpg"/></li>
+		<li><img src="../images/weddingExpoFile-extend-img80.jpg"/></li>
+		<li><img src="../images/weddingExpoFile-extend-img80.jpg"/></li>
+		<li><img src="../images/weddingExpoFile-extend-img80.jpg"/></li>
+	</ul>
+</div>*/
+flexslider();
 function flexslider(){
 	if(YD.isEditmode){
 		// 编辑模式下
+		$('.flexslider').height($('.flexslider img').height());
 	    $('.flexslider').css({
 	        'overflow-x': 'hidden',
 	        'overflow-y': 'auto'
@@ -176,13 +251,13 @@ function flexslider(){
 	}else{
 		// 非编辑模式下
 	    $('.flexslider').css({ 'overflow': 'hidden' });
-	    $('.flexslider').flexslider({
+	    $(".flexslider").flexslider({
 			animation: "slide",				// 图片变换方式：淡入淡出(fade)或者滑动(slide)
         	direction: "horizontal",       	// 图片滑动方向：左右(horizontal)、上下(vertical)
         	directionNav: true, 			// 是否显示左右控制按钮(wap端要设置为false)
         	slideshow: true,				// 是否自动播放
         	randomize: false, 				// 是否随机幻灯片
-        	controlNav: false,				// 是否显示控制菜单(小圆点)
+        	controlNav: true,				// 是否显示控制菜单(小圆点)
         	animationSpeed: 600,			// 滚动过度效果播放时长
         	slideshowSpeed: 3000, 			// 自动播放速度毫秒
         	mousewheel: true, 				// 鼠标滚轮控制图片滑动
