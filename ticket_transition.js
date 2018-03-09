@@ -19,7 +19,7 @@ function transExhib(ExType,start,end,curAddr,nxtAddr){
 	    var weddPop=$(".wedd-pop");
 	    var homePop=$(".home-pop");
 	    var otherPop=$(".other-pop");
-	    var addrBox=$('.min_time');
+	    var addrBox=$(".min_time");
 
 
 		switch(ExType){
@@ -35,7 +35,7 @@ function transExhib(ExType,start,end,curAddr,nxtAddr){
 		    	
         //换届
         function transEx(start,end,pop){
-        	console.log(pop);
+//         	console.log(pop);
         	// 索票截止时间，出现弹框
         	var start=new Date(start).getTime();
         	// 下次索票开始时间，隐藏弹框
