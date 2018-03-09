@@ -29,7 +29,7 @@ function transExhib(isWeddEx,isHomeEx,isOtherEx){
 				    if( new Date() - expotimemin >0 ){
 				            $('.min_time').text("杭州国际博览中心 6月23-24日")
 				    }else{
-				        
+				        console.log(1);
 				            $('.min_time').text("·杭州国际博览中心 3月10-11日·")
 				    }
 				}
@@ -61,6 +61,7 @@ function transExhib(isWeddEx,isHomeEx,isOtherEx){
 		                    if(new Date() - strmin > 0 && new Date() - endmin <0){
 		                        $('.tcwap .expo_tc').css({'top':Top,'left':Left}).show()
 		                    }else{
+					console.log(1);
 		                        $('.expo_tc').hide()
 		                    }
 		                }
