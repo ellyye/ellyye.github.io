@@ -19,7 +19,7 @@ function transExhib(ExType,start,end,curAddr,nxtAddr){
 	    var weddPop=$(".wedd-pop");
 	    var homePop=$(".home-pop");
 	    var otherPop=$(".other-pop");
-	    var addrBox=$('.expo_time');
+	    var addrBox=$('.min_time');
 
 
 		switch(ExType){
