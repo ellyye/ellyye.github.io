@@ -1,9 +1,0 @@
-YD.anchorTo=function(target,y){
-	target.click(function(){
-		if($.type(y)=="object"){
-			$(window).scrollTop(y.offset().top);
-		}else{
-			$(window).scrollTop(y);
-		}
-	})
-}

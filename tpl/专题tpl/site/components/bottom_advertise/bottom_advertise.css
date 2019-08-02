@@ -1,9 +1,0 @@
-/********************************pc端*/
-.advertisement { width:1160px; margin:20px auto; padding-bottom:40px; }
-.advertisement a { float:left; margin:0 5px;padding:20px 0; width: 280px;}
-.advertisement a img { width: 280px; height:auto;}
-.advertisement a img:hover { box-shadow: 0 0 3px #333;}
-/********************************wap端*/
-.advertisement { width:15.5rem; margin:.25rem auto; padding-bottom:1.2rem; overflow:hidden;}
-.advertisement a { float:left; display: block; width: 7rem; height: 3.825rem; margin-left: .5rem; margin-top: .5rem;}
-.advertisement a img { width:7rem; height:3.825rem; display:block;}
